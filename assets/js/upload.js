@@ -271,130 +271,68 @@ function startUpload() {
     // In a real application, we would get SAS tokens for Azure Blob Storage here
     // For this demo, we'll simulate uploading to local storage
 
-const totalFiles = window.selectedFiles.length;
-let uploadedCount = 0;
-const uploadedPhotos = [];
 
-window.selectedFiles.forEach((file, index) => {
-    const reader = new FileReader();
-    reader.readAsArrayBuffer(file);
-    
-    reader.onload = async (e) => {
-        // Generate unique filename
-        const fileName = `${Date.now()}-${file.name}`;
-        const uploadUrl = `${sasUrl}/${fileName}`;
-        
-        try {
-            // Upload to Azure Blob Storage
-            const response = await fetch(uploadUrl, {
-                method: "PUT",
-                headers: {
-                    "x-ms-blob-type": "BlockBlob",
-                    "Content-Type": file.type
-                },
-                body: e.target.result
-            });
-
-            if (response.ok) {
-                uploadedCount++;
-                const blobUrl = uploadUrl.split("?")[0]; // Remove SAS token from URL
-
-                uploadedPhotos.push({
-                    id: generateUUID(),
-                    url: blobUrl, // Store the public URL
-                    contributor: uploaderName,
-                    uploadDate: new Date().toISOString(),
-                    likes: 0,
-                    comments: []
-                });
-
-                // Update progress UI
-                const progress = Math.round((uploadedCount / totalFiles) * 100);
-                document.getElementById('progressBar').style.width = `${progress}%`;
-                document.getElementById('progressStatus').textContent = `Uploading ${uploadedCount} of ${totalFiles} photos...`;
-
-                // If all uploads are done, update localStorage
-                if (uploadedCount === totalFiles) {
-                    eventData.photos = (eventData.photos || []).concat(uploadedPhotos);
-                    localStorage.setItem('events', JSON.stringify(events));
-
-                    // Show success message
-                    setTimeout(() => {
-                        document.getElementById('uploadProgress').style.display = 'none';
-                        document.getElementById('uploadSuccess').style.display = 'flex';
-                    }, 500);
-                }
-            } else {
-                console.error("Upload failed for file:", fileName);
-                alert(`Failed to upload ${file.name}.`);
-            }
-        } catch (error) {
-            console.error("Upload error:", error);
-            alert(`Error uploading ${file.name}.`);
-        }
-    };
-});
-
-    
-    const totalFiles = window.selectedFiles.length;
-    let uploadedCount = 0;
-    const uploadedPhotos = [];
-    
-    // Process each file
     window.selectedFiles.forEach((file, index) => {
-        // In a real app, this would compress the image and upload to Azure
-        // Here we'll simulate with a timeout and reading the file as data URL
-        setTimeout(() => {
-            const reader = new FileReader();
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+        
+        reader.onload = async (e) => {
+            // Generate unique filename
+            const fileName = `${Date.now()}-${file.name}`;
+            //const uploadUrl = `${sasUrl}/${fileName}`;
+            const uploadUrl = `https://eventphotosgallery.blob.core.windows.net/event-images/${fileName}?<sv=2024-11-04&ss=b&srt=o&sp=rwdctfx&se=2026-06-03T20:42:12Z&st=2025-04-04T12:42:12Z&sip=192.168.1.35&spr=https&sig=dJutmHea2imexLrkxOHnZlu9s9MDW1RAv8SOzz%2B9kpE%3D>`;
             
-            reader.onload = (e) => {
-                // Create a photo object
-                const photoData = {
-                    id: generateUUID(),
-                    dataUrl: e.target.result, // In a real app, this would be the CDN URL
-                    contributor: uploaderName,
-                    uploadDate: new Date().toISOString(),
-                    likes: 0,
-                    comments: []
-                };
-                
-                uploadedPhotos.push(photoData);
-                uploadedCount++;
-                
-                // Update progress
-                const progress = Math.round((uploadedCount / totalFiles) * 100);
-                document.getElementById('progressBar').style.width = `${progress}%`;
-                document.getElementById('progressStatus').textContent = 
-                    `Uploading ${uploadedCount} of ${totalFiles} photos...`;
-                
-                // If all files uploaded, show success
-                if (uploadedCount === totalFiles) {
-                    // Add the photos to the event
-                    if (!eventData.photos) {
-                        eventData.photos = [];
+            try {
+                // Upload to Azure Blob Storage
+                const response = await fetch(uploadUrl, {
+                    method: "PUT",
+                    headers: {
+                        "x-ms-blob-type": "BlockBlob",
+                        "Content-Type": file.type
+                    },
+                    body: e.target.result
+                });
+    
+                if (response.ok) {
+                    uploadedCount++;
+                    const blobUrl = uploadUrl.split("?")[0]; // Remove SAS token from URL
+    
+                    uploadedPhotos.push({
+                        id: generateUUID(),
+                        url: blobUrl, // Store the public URL
+                        contributor: uploaderName,
+                        uploadDate: new Date().toISOString(),
+                        likes: 0,
+                        comments: []
+                    });
+    
+                    // Update progress UI
+                    const progress = Math.round((uploadedCount / totalFiles) * 100);
+                    document.getElementById('progressBar').style.width = `${progress}%`;
+                    document.getElementById('progressStatus').textContent = `Uploading ${uploadedCount} of ${totalFiles} photos...`;
+    
+                    // If all uploads are done, update localStorage
+                    if (uploadedCount === totalFiles) {
+                        eventData.photos = (eventData.photos || []).concat(uploadedPhotos);
+                        localStorage.setItem('events', JSON.stringify(events));
+    
+                        // Show success message
+                        setTimeout(() => {
+                            document.getElementById('uploadProgress').style.display = 'none';
+                            document.getElementById('uploadSuccess').style.display = 'flex';
+                        }, 500);
                     }
-                    
-                    eventData.photos = eventData.photos.concat(uploadedPhotos);
-                    
-                    // Update the event in localStorage
-                    const updatedEvents = events.map(event => 
-                        event.id === eventCode ? eventData : event
-                    );
-                    
-                    localStorage.setItem('events', JSON.stringify(updatedEvents));
-                    
-                    // Show success message
-                    setTimeout(() => {
-                        document.getElementById('uploadProgress').style.display = 'none';
-                        document.getElementById('uploadSuccess').style.display = 'flex';
-                    }, 500);
+                } else {
+                    console.error("Upload failed for file:", fileName);
+                    alert(`Failed to upload ${file.name}.`);
                 }
-            };
-            
-            reader.readAsDataURL(file);
-        }, index * 500); // Simulate network delay
+            } catch (error) {
+                console.error("Upload error:", error);
+                alert(`Error uploading ${file.name}.`);
+            }
+        };
     });
-}
+    }
 
 /**
  * Generate a random UUID
