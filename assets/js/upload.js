@@ -280,7 +280,7 @@ function startUpload() {
             // Generate unique filename
             const fileName = `${Date.now()}-${file.name}`;
             //const uploadUrl = `${sasUrl}/${fileName}`;
-            const uploadUrl = `https://eventphotosgallery.blob.core.windows.net/event-images/${fileName}?<sv=2024-11-04&ss=b&srt=o&sp=rwdctfx&se=2026-06-03T20:42:12Z&st=2025-04-04T12:42:12Z&sip=192.168.1.35&spr=https&sig=dJutmHea2imexLrkxOHnZlu9s9MDW1RAv8SOzz%2B9kpE%3D>`;
+            const uploadUrl = `https://eventphotosgallery.blob.core.windows.net/event-images/${fileName}?<sv=2024-11-04&ss=b&srt=o&sp=rwdctfx&se=2026-06-03T20:42:12Z&st=2025-04-04T12:42:12Z&spr=https&sig=dJutmHea2imexLrkxOHnZlu9s9MDW1RAv8SOzz%2B9kpE%3D>`;
             
             try {
                 // Upload to Azure Blob Storage
@@ -337,6 +337,7 @@ function startUpload() {
 try {
         const response = await fetch(uploadUrl, {
             method: "PUT",
+            mode: "cors",
             headers: {
                 "x-ms-blob-type": "BlockBlob",
                 "Content-Type": file.type
