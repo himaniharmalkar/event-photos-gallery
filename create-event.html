@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event - SnapTogether</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-camera-retro"></i>
+                    <h1>SnapTogether</h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#how-it-works">How It Works</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="create-event.html" class="btn btn-primary active">Create Event</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="create-event-section">
+        <div class="container">
+            <div class="create-event-content">
+                <h1>Create Your Event Gallery</h1>
+                <p>Set up a shared photo gallery for your next event in just a few steps</p>
+                
+                <form id="createEventForm" class="create-event-form">
+                    <div class="form-group">
+                        <label for="eventName">Event Name</label>
+                        <input type="text" id="eventName" placeholder="e.g., Sarah & Tom's Wedding" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventDate">Event Date</label>
+                        <input type="date" id="eventDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventDescription">Description (Optional)</label>
+                        <textarea id="eventDescription" placeholder="Tell guests what this gallery is for..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="yourName">Your Name</label>
+                            <input type="text" id="yourName" placeholder="Your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="yourEmail">Your Email (Optional)</label>
+                            <input type="email" id="yourEmail" placeholder="For gallery management">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group privacy-options">
+                        <label>Privacy Settings</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="privacyPublic" name="privacy" value="public" checked>
+                                <label for="privacyPublic">
+                                    <i class="fas fa-globe"></i>
+                                    <div>
+                                        <h4>Public Gallery</h4>
+                                        <p>Anyone with the link can view and upload</p>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="radio-option">
+                                <input type="radio" id="privacyPrivate" name="privacy" value="private">
+                                <label for="privacyPrivate">
+                                    <i class="fas fa-lock"></i>
+                                    <div>
+                                        <h4>Private Gallery</h4>
+                                        <p>Only people with the code can view and upload</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group moderation-options">
+                        <label>Upload Moderation</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="moderationOff" name="moderation" value="off" checked>
+                                <label for="moderationOff">
+                                    <i class="fas fa-check-circle"></i>
+                                    <div>
+                                        <h4>No Moderation</h4>
+                                        <p>All uploads appear immediately</p>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="radio-option">
+                                <input type="radio" id="moderationOn" name="moderation" value="on">
+                                <label for="moderationOn">
+                                    <i class="fas fa-user-shield"></i>
+                                    <div>
+                                        <h4>Require Approval</h4>
+                                        <p>Review uploads before they appear</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group expiration-options">
+                        <label for="expiration">Gallery Expiration</label>
+                        <select id="expiration">
+                            <option value="30">30 days after event</option>
+                            <option value="60">60 days after event</option>
+                            <option value="90" selected>90 days after event</option>
+                            <option value="180">6 months after event</option>
+                            <option value="365">1 year after event</option>
+                            <option value="0">Never expire</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Create Gallery</button>
+                        <a href="index.html" class="btn btn-outline">Cancel</a>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="create-event-preview">
+                <div class="preview-container">
+                    <h3>Gallery Preview</h3>
+                    <div class="event-preview">
+                        <div class="preview-header">
+                            <h2 id="previewTitle">Your Event Name</h2>
+                            <p id="previewDate">Event Date</p>
+                        </div>
+                        <div class="preview-gallery">
+                            <div class="preview-image"></div>
+                            <div class="preview-image"></div>
+                            <div class="preview-image"></div>
+                            <div class="preview-image"></div>
+                            <div class="preview-image"></div>
+                            <div class="preview-image"></div>
+                        </div>
+                        <div class="preview-upload">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-cloud-upload-alt"></i> Upload Photos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-camera-retro"></i>
+                    <h2>SnapTogether</h2>
+                    <p>Share life's moments, together.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="create-event.html">Create Event</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p>Have questions or feedback?</p>
+                    <a href="mailto:support@snaptogether.com">support@snaptogether.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SnapTogether. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Event Gallery Created!</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>Your gallery is ready to share with your event attendees.</p>
+                
+                <div class="event-info">
+                    <h3 id="createdEventName">Event Name</h3>
+                    <p id="createdEventDate">Event Date</p>
+                </div>
+                
+                <div class="event-code">
+                    <h4>Event Code</h4>
+                    <div class="code-display">
+                        <span id="eventCode">ABC123</span>
+                        <button id="copyCode" class="btn-icon">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="event-link">
+                    <h4>Shareable Link</h4>
+                    <div class="link-display">
+                        <input type="text" id="eventLink" readonly>
+                        <button id="copyLink" class="btn-icon">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <a id="viewGalleryBtn" href="#" class="btn btn-primary">View Gallery</a>
+                    <button id="shareGalleryBtn" class="btn btn-secondary">
+                        <i class="fas fa-share-alt"></i> Share Gallery
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script>
+        // Live preview updates
+        document.getElementById('eventName').addEventListener('input', function() {
+            document.getElementById('previewTitle').textContent = this.value || 'Your Event Name';
+        });
+        
+        document.getElementById('eventDate').addEventListener('input', function() {
+            const date = new Date(this.value);
+            if (!isNaN(date)) {
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                document.getElementById('previewDate').textContent = date.toLocaleDateString('en-US', options);
+            } else {
+                document.getElementById('previewDate').textContent = 'Event Date';
+            }
+        });
+        
+        // Form submission
+        document.getElementById('createEventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Generate random event code
+            const eventCode = generateEventCode();
+            
+            // Store event data
+            const eventData = {
+                id: eventCode,
+                name: document.getElementById('eventName').value,
+                date: document.getElementById('eventDate').value,
+                description: document.getElementById('eventDescription').value,
+                creator: {
+                    name: document.getElementById('yourName').value,
+                    email: document.getElementById('yourEmail').value
+                },
+                privacy: document.querySelector('input[name="privacy"]:checked').value,
+                moderation: document.querySelector('input[name="moderation"]:checked').value,
+                expiration: document.getElementById('expiration').value,
+                created: new Date().toISOString(),
+                photos: []
+            };
+            
+            // Save to local storage (in a real app, this would go to a database/Azure)
+            saveEvent(eventData);
+            
+            // Show success modal
+            showSuccessModal(eventData);
+        });
+        
+        function generateEventCode() {
+            // Generate a random 6-character alphanumeric code
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < 6; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+        
+        function saveEvent(eventData) {
+            // Get existing events or initialize new array
+            let events = JSON.parse(localStorage.getItem('events') || '[]');
+            events.push(eventData);
+            localStorage.setItem('events', JSON.stringify(events));
+        }
+        
+        function showSuccessModal(eventData) {
+            const modal = document.getElementById('successModal');
+            document.getElementById('createdEventName').textContent = eventData.name;
+            
+            const date = new Date(eventData.date);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('createdEventDate').textContent = date.toLocaleDateString('en-US', options);
+            
+            document.getElementById('eventCode').textContent = eventData.id;
+            
+            const eventLink = `${window.location.origin}/event-gallery.html?code=${eventData.id}`;
+            document.getElementById('eventLink').value = eventLink;
+            document.getElementById('viewGalleryBtn').href = `event-gallery.html?code=${eventData.id}`;
+            
+            // Show the modal
+            modal.style.display = 'block';
+            
+            // Close modal on X click
+            document.querySelector('.close-modal').addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Copy button functionality
+            document.getElementById('copyCode').addEventListener('click', function() {
+                navigator.clipboard.writeText(eventData.id)
+                    .then(() => {
+                        alert('Event code copied to clipboard!');
+                    });
+            });
+            
+            document.getElementById('copyLink').addEventListener('click', function() {
+                navigator.clipboard.writeText(eventLink)
+                    .then(() => {
+                        alert('Event link copied to clipboard!');
+                    });
+            });
+            
+            // Share functionality (if Web Share API is available)
+            document.getElementById('shareGalleryBtn').addEventListener('click', function() {
+                if (navigator.share) {
+                    navigator.share({
+                        title: `Join ${eventData.name} photo gallery`,
+                        text: `Upload and view photos from ${eventData.name}. Event code: ${eventData.id}`,
+                        url: eventLink
+                    });
+                } else {
+                    alert('Use this link to share: ' + eventLink);
+                }
+            });
+        }
+        
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.main-nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

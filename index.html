@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Photo Gallery - Share Memories Together</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-camera-retro"></i>
+                <h1>SnapTogether</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="create-event.html" class="btn btn-primary">Create Event</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Capture & Share Event Memories Together</h1>
+                <p>Create a collaborative photo gallery for your wedding, conference, or party - where everyone can upload, like, and comment.</p>
+                <div class="hero-cta">
+                    <a href="create-event.html" class="btn btn-primary">Create New Event</a>
+                    <div class="join-event">
+                        <input type="text" placeholder="Enter Event Code" id="eventCodeInput">
+                        <button class="btn btn-secondary" id="joinEventBtn">Join Event</button>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-collage">
+                    <div class="collage-img img1"></div>
+                    <div class="collage-img img2"></div>
+                    <div class="collage-img img3"></div>
+                    <div class="collage-img img4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <h3>Create an Event</h3>
+                    <p>Set up your event gallery in seconds and get a unique sharing code</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Share with Guests</h3>
+                    <p>Invite attendees using the event code or direct link</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Everyone Uploads</h3>
+                    <p>Guests can easily contribute their photos to the gallery</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Engage & Enjoy</h3>
+                    <p>Like, comment, and download photos from the event</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Privacy Controls</h3>
+                    <p>Create public or private galleries with access control</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Real-time Updates</h3>
+                    <p>See new photos appear instantly as they're uploaded</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Upload directly from your phone or tablet without an app</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Easy Downloads</h3>
+                    <p>Download individual photos or the entire album</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Content Moderation</h3>
+                    <p>Optional approval system for uploaded content</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-compress-arrows-alt"></i>
+                    <h3>Auto Compression</h3>
+                    <p>Images are automatically optimized for fast loading</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to create your shared photo gallery?</h2>
+            <p>It's free, fast, and no account needed!</p>
+            <a href="create-event.html" class="btn btn-primary">Create Your Event Now</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-camera-retro"></i>
+                    <h2>SnapTogether</h2>
+                    <p>Share life's moments, together.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="create-event.html">Create Event</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p>Have questions or feedback?</p>
+                    <a href="mailto:support@snaptogether.com">support@snaptogether.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SnapTogether. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        document.getElementById('joinEventBtn').addEventListener('click', function() {
+            const eventCode = document.getElementById('eventCodeInput').value.trim();
+            if (eventCode) {
+                window.location.href = `event-gallery.html?code=${eventCode}`;
+            } else {
+                alert('Please enter a valid event code');
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.main-nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

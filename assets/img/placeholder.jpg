@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .placeholder {
+      width: 800px;
+      height: 600px;
+      background-color: #f0f0f0;
+      border: 1px dashed #ccc;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #888;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+    .camera-icon {
+      font-size: 100px;
+      margin-bottom: 20px;
+    }
+    .text {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="placeholder">
+    <div class="camera-icon">📷</div>
+    <div class="text">Image placeholder</div>
+  </div>
+</body>
+</html>
