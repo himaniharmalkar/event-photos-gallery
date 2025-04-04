@@ -337,7 +337,6 @@ function startUpload() {
 try {
         const response = await fetch(uploadUrl, {
             method: "PUT",
-            mode: "cors",
             headers: {
                 "x-ms-blob-type": "BlockBlob",
                 "Content-Type": file.type
